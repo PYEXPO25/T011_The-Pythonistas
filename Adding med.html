@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication Adherence Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Medication Adherence Tracker</h1>
+
+    <!-- Form to input medication details -->
+    <form>
+        <label for="quantity">Enter Quantity Taken:</label>
+        <input type="number" id="quantity" min="1" value="1"><br><br>
+
+        <label for="medication">Select Medication:</label>
+        <select id="medication">
+            <option value="Aspirin">Aspirin</option>
+            <option value="Paracetamol">Paracetamol</option>
+            <option value="Ibuprofen">Ibuprofen</option>
+            <option value="Amoxicillin">Amoxicillin</option>
+            <option value="Metformin">Metformin</option>
+        </select><br><br>
+
+        <label for="adherence">Did you take your medication as prescribed?</label><br>
+        <input type="radio" id="yes" name="adherence" value="Yes" checked>
+        <label for="yes">Yes</label><br>
+        <input type="radio" id="no" name="adherence" value="No">
+        <label for="no">No</label><br><br>
+
+        <button type="button" onclick="trackAdherence()">Track Adherence</button>
+    </form>
+
+    <h2>Medication Stock Availability</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Medication</th>
+                <th>Stock Level</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Aspirin</td>
+                <td id="aspirin-stock">120 units</td>
+            </tr>
+            <tr>
+                <td>Paracetamol</td>
+                <td id="paracetamol-stock">25 units</td>
+            </tr>
+            <tr>
+                <td>Ibuprofen</td>
+                <td id="ibuprofen-stock">50 units</td>
+            </tr>
+            <tr>
+                <td>Amoxicillin</td>
+                <td id="amoxicillin-stock">0 units (Out of Stock)</td>
+            </tr>
+            <tr>
+                <td>Metformin</td>
+                <td id="metformin-stock">300 units</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Adherence Summary</h2>
+    <p id="adherence-summary"></p>
+
+    <script>
+        // Object to hold stock values for each medication
+        let stock = {
+            "Aspirin": 120,
+            "Paracetamol": 25,
+            "Ibuprofen": 50,
+            "Amoxicillin": 0,
+            "Metformin": 300
+        };
+
+        // Function to track adherence and update stock
+        function trackAdherence() {
+            const medication = document.getElementById('medication').value;
+            const quantityTaken = parseInt(document.getElementById('quantity').value); // Quantity user took
+            const adherence = document.querySelector('input[name="adherence"]:checked').value;
+
+            // Track adherence and update stock
+            if (adherence === "Yes") {
+                if (stock[medication] >= quantityTaken) {
+                    stock[medication] -= quantityTaken;
+                    document.getElementById(medication.toLowerCase() + "-stock").innerText = stock[medication] + " units";
+                    document.getElementById('adherence-summary').innerText = `You took ${quantityTaken} ${medication}(s) as prescribed.`;
+                } else {
+                    document.getElementById('adherence-summary').innerText = `Not enough stock for ${medication}. You only have ${stock[medication]} units.`;
+                }
+            } else {
+                document.getElementById('adherence-summary').innerText = `You missed your ${medication} dose.`;
+            }
+        }
+    </script>
+
+</body>
+</html>

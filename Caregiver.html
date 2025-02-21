@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caregiver Registration</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center">Caregiver Registration</h2>
+    <form action="submit_caregiver.php" method="post">
+      <div class="mb-3">
+        <label for="cname" class="form-label">Caregiver Full Name:</label>
+        <input type="text" class="form-control" id="cname" name="cname" required>
+      </div>
+      <div class="mb-3">
+        <label for="relationship" class="form-label">Relationship to Patient:</label>
+        <input type="text" class="form-control" id="relationship" name="relationship" required>
+      </div>
+      <div class="mb-3">
+        <label for="cphone" class="form-label">Phone Number:</label>
+        <input type="tel" class="form-control" id="cphone" name="cphone" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Register as Caregiver</button>
+    </form>
+  </div>
+</body>
+</html>
