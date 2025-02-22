@@ -7,8 +7,11 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Used for session management
 
 # Twilio Credentials (Replace with your actual credentials)
-TWILIO_ACCOUNT_SID = "AC4bfa5e56e807ea84ae5fe0344bcf4115"
-TWILIO_AUTH_TOKEN = "35988329e4284fab3f4f44a2881c0acd"
+import os
+
+TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
+
 TWILIO_PHONE_NUMBER = "+17609775493"
 
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
