@@ -5,7 +5,7 @@
 
     Problem Id        - PY008
 
-3. Overview :
+2. Overview :
 
    Medicine Reminder Web App is a smart healthcare assistant designed for patients and caregivers.
 
@@ -18,7 +18,7 @@
         g) Weekly adherence credits reward patients with discounts.
         h) Built with Flask, SQLite, Twilio, HTML, CSS and Bootstrap for a modern experience.
    
-4. Team Members :
+3. Team Members :
   
   Team ID – T011
 
@@ -31,7 +31,7 @@
         Member 5 - Nivetha.S             - Frontend[Styling](Manage)
         Member 6 - Kannikaparameswari.S  - Frontend[Styling](Manage)
 
-    Team Photo: https://drive.google.com/file/d/1X6F824cL5NN0sWevAu98w0Sz_F8cUjYN/view?usp=drivesdk
+    Team Photo: "https://docs.google.com/presentation/d/1iRvf19s1VJcEdCFVxYEruGyUpdkbecFI/edit?usp=sharing&ouid=100586424485622651629&rtpof=true&sd=true"
     
 4. Technical Stack :
 
@@ -49,7 +49,7 @@
        Install Python,
        Install Git.
    
-   Clone this repository: bash git clone https://github.com/PYEXPO25/T011_The-Pythonistas.git
+   Clone this repository: bash git clone "https://github.com/PYEXPO25/T011_The-Pythonistas.git"
 
  (ii) Installation :
       Navigate to the project directory: bash cd repository-name
@@ -71,4 +71,27 @@
 
     Open your browser and navigate to:
 
-              http://127.0.0.1:5000/
+              "http://127.0.0.1:5000/"
+
+7. UI Overview :
+      
+        Images to demonstrate the user interface:
+
+            Example pages:
+
+                Landing Page: 
+
+                Dashboard: 
+
+                Analytics View:
+
+8. Resources :
+         
+             PowerPoint Presentation -- "https://docs.google.com/presentation/d/1NcSZ7z8CdM7rOG3A3CBPHVqMmvT1l90f_agmp-7m554/edit#slide=id.p1"
+
+            Project Video --
+
+            YouTube Link --
+
+
+
