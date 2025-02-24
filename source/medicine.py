@@ -7,8 +7,8 @@ app = Flask(__name__)
 app.secret_key = 'abcdef'  # Change this to a secure key
 
 # Twilio Credentials (Replace with actual credentials)
-TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
-TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
+TWILIO_ACCOUNT_SID = os.getenv("AC4bfa5e56e807ea84ae5fe0344bcf4115")
+TWILIO_AUTH_TOKEN = os.getenv("35988329e4284fab3f4f44a2881c0acd")
 TWILIO_PHONE_NUMBER = "+17609775493"
 
 # Initialize Twilio client
