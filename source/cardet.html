@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimPill - Caregiver Registration</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 400px;
+            width: 100%;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #0066cc;
+            font-size: 28px;
+            margin-bottom: 25px;
+            margin-top: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 15px;
+            color: #333;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: #0066cc;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .btn {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: 500;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            background-color: #0052a3;
+        }
+        
+        .footer {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #888;
+        }
+        
+        .privacy-text {
+            font-size: 12px;
+            color: #777;
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .required:after {
+            content: " *";
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SimPill</h1>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="name" class="required">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter full name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="age" class="required">Age</label>
+                <input type="number" class="form-control" id="age" placeholder="Enter age" required min="1" max="120">
+            </div>
+
+            <div class="form-group">
+                <label for="dob" class="required">Date of Birth</label>
+                <input type="number" class="form-control" id="age" placeholder="Enter DOB" required min="1" max="120">
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="required">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email address" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone" class="required">Phone</label>
+                <input type="tel" class="form-control" id="phone" placeholder="Enter phone number" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" class="form-control" id="location" placeholder="Enter your location">
+            </div>
+            
+            <div class="form-group">
+                <label for="password" class="required">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Create a password" required>
+            </div>
+            
+            <button type="submit" class="btn" id="submitBtn">Submit</button>
+        </form>
+        
+        <div class="privacy-text">
+            By registering, you agree to SimPill's Terms of Service and Privacy Policy.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Basic validation is handled by HTML5 required attributes
+            
+            // Here you would typically send the form data to your server
+            alert('Registration submitted successfully!');
+            
+            // Optional: Reset the form after submission
+            this.reset();
+        });
+    </script>
+</body>
+</html>

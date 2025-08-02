@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Doctor Availability</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .doctor-info {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .doctor-name {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .doctor-details {
+            color: #7f8c8d;
+        }
+        .schedule {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .day-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px;
+        }
+        .day-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+            color: #3498db;
+        }
+        .time-slot {
+            margin-bottom: 5px;
+            background-color: #ecf0f1;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        .not-available {
+            color: #95a5a6;
+            font-style: italic;
+            padding: 5px 0;
+        }
+        .doctors-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .doctor-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+        .doctor-card:hover {
+            transform: translateY(-5px);
+        }
+        .view-btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        .view-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Hospital Doctors Availability</h1>
+        </header>
+        
+        <!-- Doctor List View -->
+        <div class="doctors-list">
+            <div class="doctor-card">
+                <div class="doctor-name">DR. K. SURESH KUMAR</div>
+                <div class="doctor-details">Specialization: DIABETIC & GENERAL PHYSICIAN</div>
+            </div>
+            
+            <div class="doctor-card">
+                <div class="doctor-name">DR. B. ANDAL</div>
+                <div class="doctor-details">Specialization: OBSTETRICS & GYNAECOLOGIST</div>
+            </div>
+            
+            <div class="doctor-card">
+                <div class="doctor-name">DR. ARUNANDHI CHELVAN</div>
+                <div class="doctor-details">Specialization: SURGICAL ONCOLOGIST</div>
+            </div>
+            
+            <div class="doctor-card">
+                <div class="doctor-name">DR. PRAKASH</div>
+                <div class="doctor-details">Specialization: PLASTIC SURGEON</div>
+            </div>
+            
+            <div class="doctor-card">
+                <div class="doctor-name">DR. P. RAMASAMY</div>
+                <div class="doctor-details">Specialization: CARDIOLOGIST</div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. KARTHICK KANNABIRAN</div>
+                <div class="doctor-details">Specialization: CARDIOLOGIST</div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. SASI</div>
+                <div class="doctor-details">Specialization: FAMILY MEDICINE</div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. JAYAKUMAR</div>
+                <div class="doctor-details">Specialization: PULMONOLOGIST</div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. JAMUNA DEVI</div>
+                <div class="doctor-details">Specialization: PEDEATRICIAN</div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. MOHANKUMAR</div>
+                <div class="doctor-details">Specialization: DERMATOLOGIST</div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. SINDU</div>
+                <div class="doctor-details">Specialization: RADIOLOGIST</div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. ANANDHAN</div>
+                <div class="doctor-details">Specialization: NEPHROLOGIST</div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. VIGNESH</div>
+                <div class="doctor-details">Specialization: UROLOGIST</div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. RAJA</div>
+                <div class="doctor-details">Specialization: GASTEROENTROLOGIST , ENDOSCOPY & COLONOSCOPY</div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. KUMARESAN</div>
+                <div class="doctor-details">Specialization: GENERAL & LAPROSCOPIC SURGEON</div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. SANTHANUM</div>
+                <div class="doctor-details">Specialization: NEUROSURGEON</div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. ANANDHA SHANMUGARAJ</div>
+                <div class="doctor-details">Specialization: NEUROSURGEON</div>
+            </div>
+        </div>
+        
+        <!-- Doctor Availability View (would be a separate page) -->
+        <div style="margin-top: 40px; border-top: 1px solid #ddd; padding-top: 40px;">
+            <div class="doctor-card">
+                <div class="doctor-name">DR. K. SURESH KUMAR</div>
+                <div class="doctor-details">Specialization: DIABETIC & GENERAL PHYSICIAN</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div class="time-slot">Morning : 09:00 - 02:00</div>
+                    <div class="time-slot">Evening : 06:00 - 11:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div class="time-slot">Morning : 09:00 - 02:00</div>
+                    <div class="time-slot">Evening : 06:00 - 11:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div class="time-slot">Morning : 09:00 - 02:00</div>
+                    <div class="time-slot">Evening : 06:00 - 11:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div class="time-slot">Morning : 09:00 - 02:00</div>
+                    <div class="time-slot">Evening : 06:00 - 11:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div class="time-slot">Morning : 09:00 - 02:00</div>
+                    <div class="time-slot">Evening : 06:00 - 11:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div class="time-slot">Morning : 09:00 - 02:00</div>
+                    <div class="time-slot">Evening : 06:00 - 11:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div class="time-slot">Morning : 09:00 - 12:00</div>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. B. ANDAL</div>
+                <div class="doctor-details">Specialization: OBSTETRICS & GYNAECOLOGIST</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div class="time-slot">Morning : 09:00 - 02:00</div>
+                    <div class="time-slot">Evening : 06:00 - 11:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div class="time-slot">Morning : 09:00 - 02:00</div>
+                    <div class="time-slot">Evening : 06:00 - 11:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div class="time-slot">Morning : 09:00 - 02:00</div>
+                    <div class="time-slot">Evening : 06:00 - 11:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div class="time-slot">Morning : 09:00 - 02:00</div>
+                    <div class="time-slot">Evening : 06:00 - 11:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div class="time-slot">Morning : 09:00 - 02:00</div>
+                    <div class="time-slot">Evening : 06:00 - 11:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div class="time-slot">Morning : 09:00 - 02:00</div>
+                    <div class="time-slot">Evening : 06:00 - 11:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div class="time-slot">Morning : 09:00 - 12:00</div>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. P. RAMASAMY</div>
+                <div class="doctor-details">Specialization: CARDIOLOGIST</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div class="time-slot">Evening : 09:00 - 10:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div class="time-slot">Evening : 09:00 - 10:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div class="time-slot">Evening : 09:00 - 10:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div class="time-slot">Evening : 09:00 - 10:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div class="time-slot">Evening : 09:00 - 10:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div class="time-slot">Evening : 09:00 - 10:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div class="time-slot">Evening : 09:00 - 10:00</div>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. KARTHICK KANNABIRAN</div>
+                <div class="doctor-details">Specialization: CARDIOLOGIST</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div class="time-slot">Evening : 07:00 - 08:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div class="time-slot">Evening : 07:00 - 08:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div class="time-slot">Evening : 07:00 - 08:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div class="time-slot">Evening : 07:00 - 08:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div class="time-slot">Evening : 07:00 - 08:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div class="time-slot">Evening : 07:00 - 08:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div class="time-slot">Evening : 07:00 - 8:00</div>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. SASI</div>
+                <div class="doctor-details">Specialization: FAMILY MEDICINE</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div class="time-slot">Evening : 06:00 - 07:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div class="time-slot">Evening : 06:00 - 07:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div class="time-slot">Evening : 06:00 - 07:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div class="time-slot">Evening : 06:00 - 07:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div class="time-slot">Evening : 06:00 - 07:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div class="time-slot">Evening : 06:00 - 07:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div class="time-slot">Evening : 06:00 - 07:00</div>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. JAYAKUMAR</div>
+                <div class="doctor-details">Specialization: PULMONOLOGIST</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div class="time-slot">Evening : 07:30 - 08:30</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div class="time-slot">Evening : 07:30 - 08:30</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div class="time-slot">Evening : 07:30 - 08:30</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div>"not available"</div>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. RAJA</div>
+                <div class="doctor-details">Specialization: GASTEROENTROLOGIST , ENDOSCOPY & COLONOSCOPY</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div>"not available"</div>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. ANANDHAN</div>
+                <div class="doctor-details">Specialization: NEPHROLOGIST</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div>"not available"</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+                <div class="doctor-name">DR. PRAKASH</div>
+                <div class="doctor-details">Specialization: PLASTIC SURGEON</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div>"not available"</div>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. VIGNESH</div>
+                <div class="doctor-details">Specialization: UROLOGIST</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div>"not available"</div>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. KUMARESAN</div>
+                <div class="doctor-details">Specialization: GENERAL & LAPROSCOPIC SURGEON</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div>"not available"</div>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. SANTHANUM</div>
+                <div class="doctor-details">Specialization: NEUROSURGEON</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div>"not available"</div>
+                </div>
+            </div>
+
+           <div class="doctor-card">
+                <div class="doctor-name">DR. ANANDHA SHANMUGARAJ</div>
+                <div class="doctor-details">Specialization: NEUROSURGEON</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div>"not available"</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div>"not available"</div>
+                </div>
+            </div>
+            
+            <div class="doctor-card">
+                <div class="doctor-name">DR. P. RAMASAMY</div>
+                <div class="doctor-details">Specialization: CARDIOLOGIST</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div class="time-slot">Evening : 09:00 - 10:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div class="time-slot">Evening : 09:00 - 10:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div class="time-slot">Evening : 09:00 - 10:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div class="time-slot">Evening : 09:00 - 10:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div class="time-slot">Evening : 09:00 - 10:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div class="time-slot">Evening : 09:00 - 10:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div class="time-slot">Evening : 09:00 - 10:00</div>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. SINDU</div>
+                <div class="doctor-details">Specialization: RADIOLOGIST</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div class="time-slot">Evening : 04:30 - 05:30</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div class="time-slot">Evening : 04:30 - 05:30</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div class="time-slot">Evening : 04:30 - 05:30</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div class="time-slot">Evening : 04:30 - 05:30</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div class="time-slot">Evening : 04:30 - 05:30</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div class="time-slot">Evening : 04:30 - 05:30</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div class="time-slot">Evening : 04:30 - 05:30</div>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. MOHANKUMAR</div>
+                <div class="doctor-details">Specialization: DERMATOLOGIST</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div class="time-slot">Evening : 06:00 - 07:30</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div class="time-slot">Evening : 06:00 - 07:30</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div class="time-slot">Evening : 06:00 - 07:30</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div class="time-slot">Evening : 06:00 - 07:30</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div class="time-slot">Evening : 06:00 - 07:30</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div class="time-slot">Evening : 06:00 - 07:30</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div class="time-slot">Evening : 06:00 - 07:30</div>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-name">DR. JAMUNA DEVI</div>
+                <div class="doctor-details">Specialization: PEDEATRICIAN</div>
+            </div>
+            <h2>Weekly Availability</h2>
+            <div class="schedule">
+                <div class="day-card">
+                    <div class="day-header">Monday</div>
+                    <div class="time-slot">Afternoon : 01:00 - 02:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Tuesday</div>
+                    <div class="time-slot">Afternoon : 01:00 - 02:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Wednesday</div>
+                    <div class="time-slot">Afternoon : 01:00 - 02:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Thursday</div>
+                    <div class="time-slot">Afternoon : 01:00 - 02:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Friday</div>
+                    <div class="time-slot">Afternoon : 01:00 - 02:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Saturday</div>
+                    <div class="time-slot">Afternoon : 01:00 - 02:00</div>
+                </div>
+                
+                <div class="day-card">
+                    <div class="day-header">Sunday</div>
+                    <div class="time-slot">Afternoon : 01:00 - 02:00</div>
+                </div>
+            </div>
+    </div>
+</body>
+</html>
