@@ -27,7 +27,7 @@
         Member 1 - Sarwina.M (TL)        - Backend (Admin)
         Member 2 - Harnika.P             - Backend (Manage)
         Member 3 - SriNivetha.S.G        - Frontend[Structuring](Manage)
-        Member 4 - Tharchana.S           - Frontend[Structuring](Manage)
+        Member 4 - Dhatchana sree M         - Frontend[Structuring](Manage)
         Member 5 - Nivetha.S             - Frontend[Styling](Manage)
         Member 6 - Kannikaparameswari.S  - Frontend[Styling](Manage)
 
